@@ -1,12 +1,16 @@
 services:
   pythonapp:
-    build: ./Dockerfile_python
+    build: 
+       context: ./
+      dockerfile: Dockerfile_python
     command: sh -c "sleep 10s ; python3 ./hello_world.py"
     depends_on:
       - mysql
 
   mysql:
-    build: ./Dockerfile_mysql
+    build: 
+       context: ./
+      dockerfile: Dockerfile_mysql
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
